@@ -44,6 +44,8 @@ CC_SOURCES  := $(wildcard src/*.c \
                               *.c)
 CXX_SOURCES := $(wildcard src/*.cpp src/*.cc src/*.C \
                               *.cpp     *.cc     *.C)
+HEADERS     := $(wildcard src/*.hpp src/*.hh src/*.H src/*.h \
+                              *.hpp     *.hh     *.H     *.h)
 
 # generate the resulting object file list
 CXX_BASENAMES := $(basename $(CXX_SOURCES))
@@ -90,7 +92,7 @@ sanitizer: $(PROJECT)
 
 
 # generate and load the dependency graph
-Makefile.deps: $(CC_SOURCES) $(CXX_SOURCES)
+Makefile.deps: $(CC_SOURCES) $(CXX_SOURCES) $(HEADERS)
 ifneq ($(CC_SOURCES),)
 	$(CC)  $(CFLAGS)   -MM $(CC_SOURCES)  > Makefile.deps
 endif
