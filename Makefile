@@ -66,6 +66,11 @@ endif
 clean:
 	$(RM) $(OBJECTS) $(PROJECT)
 
+.PHONY: distclean
+distclean: clean
+	$(RM) Makefile.deps
+
+
 .PHONY: release
 release: CC       := $(RELEASE_CC)
 release: CXX      := $(RELEASE_CXX)
