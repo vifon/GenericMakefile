@@ -97,11 +97,12 @@ sanitizer: $(PROJECT)
 
 
 # generate and load the dependency graph
-Makefile.deps: $(CC_SOURCES) $(CXX_SOURCES) $(HEADERS)
+Makefile.deps: | $(CC_SOURCES) $(CXX_SOURCES) $(HEADERS)
+	$(RM) Makefile.deps
 ifneq ($(CC_SOURCES),)
-	$(CC)  $(CFLAGS)   -MM $(CC_SOURCES)  > Makefile.deps
+	$(CC)  $(CFLAGS)   -MM $(CC_SOURCES)  >> Makefile.deps
 endif
 ifneq ($(CXX_SOURCES),)
-	$(CXX) $(CXXFLAGS) -MM $(CXX_SOURCES) > Makefile.deps
+	$(CXX) $(CXXFLAGS) -MM $(CXX_SOURCES) >> Makefile.deps
 endif
 -include Makefile.deps
