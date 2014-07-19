@@ -1,0 +1,4 @@
+#!/bin/bash
+# Symlink this file to some directory in your PATH. Symlink, not copy!
+
+cp "$(dirname "$(realpath $0)")/Makefile" .
