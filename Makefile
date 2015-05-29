@@ -12,6 +12,7 @@ CC       ?= gcc
 CXX      ?= g++
 CFLAGS   ?= -std=$(STD_CC)  -Wall -Wextra
 CXXFLAGS ?= -std=$(STD_CXX) -Wall -Wextra -Weffc++
+LDLIBS   ?= 
 LDFLAGS  ?= 
 
 # release build
@@ -19,6 +20,7 @@ RELEASE_CC       = $(CC)
 RELEASE_CXX      = $(CXX)
 RELEASE_CFLAGS   = $(CFLAGS)   -O2
 RELEASE_CXXFLAGS = $(CXXFLAGS) -O2
+RELEASE_LDLIBS   = $(LDLIBS)
 RELEASE_LDFLAGS  = $(LDFLAGS)
 
 # debug build
@@ -26,6 +28,7 @@ DEBUG_CC       = $(CC)
 DEBUG_CXX      = $(CXX)
 DEBUG_CFLAGS   = $(CFLAGS)   -g3 -O0
 DEBUG_CXXFLAGS = $(CXXFLAGS) -g3 -O0
+DEBUG_LDLIBS   = $(LDLIBS)
 DEBUG_LDFLAGS  = $(LDFLAGS)
 
 # clang sanitizer build
@@ -34,6 +37,7 @@ SANITIZER_CC       = clang
 SANITIZER_CXX      = clang++
 SANITIZER_CFLAGS   = $(CFLAGS)   -g3 -fsanitize=$(SANITIZER)
 SANITIZER_CXXFLAGS = $(CXXFLAGS) -g3 -fsanitize=$(SANITIZER)
+SANITIZER_LDLIBS   = $(LDLIBS)
 SANITIZER_LDFLAGS  = $(LDFLAGS)      -fsanitize=$(SANITIZER)
 
 #################### END OF CONFIG ####################
@@ -76,6 +80,7 @@ release: CC       := $(RELEASE_CC)
 release: CXX      := $(RELEASE_CXX)
 release: CFLAGS   := $(RELEASE_CFLAGS)
 release: CXXFLAGS := $(RELEASE_CXXFLAGS)
+release: LDLIBS   := $(RELEASE_LDLIBS)
 release: LDFLAGS  := $(RELEASE_LDFLAGS)
 release: $(PROJECT)
 
@@ -84,6 +89,7 @@ debug: CC       := $(DEBUG_CC)
 debug: CXX      := $(DEBUG_CXX)
 debug: CFLAGS   := $(DEBUG_CFLAGS)
 debug: CXXFLAGS := $(DEBUG_CXXFLAGS)
+debug: LDLIBS   := $(DEBUG_LDLIBS)
 debug: LDFLAGS  := $(DEBUG_LDFLAGS)
 debug: $(PROJECT)
 
@@ -92,6 +98,7 @@ sanitizer: CC       := $(SANITIZER_CC)
 sanitizer: CXX      := $(SANITIZER_CXX)
 sanitizer: CFLAGS   := $(SANITIZER_CFLAGS)
 sanitizer: CXXFLAGS := $(SANITIZER_CXXFLAGS)
+sanitizer: LDLIBS   := $(SANITIZER_LDLIBS)
 sanitizer: LDFLAGS  := $(SANITIZER_LDFLAGS)
 sanitizer: $(PROJECT)
 
