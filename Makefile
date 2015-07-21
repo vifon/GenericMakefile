@@ -8,8 +8,8 @@ STD_CC  = c99
 STD_CXX = c++11
 
 # default flags
-CC       ?= gcc
-CXX      ?= g++
+CC        = gcc
+CXX       = g++
 CFLAGS   ?= -std=$(STD_CC)  -Wall -Wextra
 CXXFLAGS ?= -std=$(STD_CXX) -Wall -Wextra -Weffc++
 LDLIBS   ?= 
